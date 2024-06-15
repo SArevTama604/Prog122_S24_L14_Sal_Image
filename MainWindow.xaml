@@ -1,12 +1,43 @@
-﻿<Window x:Class="Prog122_S24_L14_Sal_Image.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Prog122_S24_L14_Sal_Image"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+﻿<Window
+    x:Class="Prog_122_S24_L14_Sal.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Prog_122_S24_L14_Sal"
+    mc:Ignorable="d"
+    Title="MainWindow"
+    Height="450"
+    Width="800">
 
-    </Grid>
+
+    <Canvas>
+        <RichTextBox
+            Height="47"
+            Canvas.Left="79"
+            Canvas.Top="367"
+            Width="423"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+            <FlowDocument>
+                <Paragraph>
+                    <Run
+                        x:Name="runDisplay" />
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <ComboBox
+            x:Name="cmbStyles"
+            HorizontalAlignment="Left"
+            Margin="544,380,0,0"
+            VerticalAlignment="Top"
+            Width="187" />
+        <Image
+            x:Name="imgDisplay"
+            HorizontalAlignment="Left"
+            Height="192"
+            Margin="152,89,0,0"
+            VerticalAlignment="Top"
+            Width="564" />
+    </Canvas>
 </Window>
