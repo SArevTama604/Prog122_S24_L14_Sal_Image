@@ -8,15 +8,25 @@ using System.Threading.Tasks;
 
 namespace Prog_122_S24_L14_Sal
 {
-    public enum STYLE { Cubism, Impressionism, Modernism } 
-
     public class Art
     {
-        STYLE _style;
-        string _name;
+        // Enum definition
+        public enum STYLE { Abstract, Impressionism, Cubism }
 
-        public STYLE Style { get => _style; set => _style = value; }
-        public string Name { get => _name; set => _name = value; }
+        private STYLE _style;
+        private string _name;
+
+        public STYLE Style
+        {
+            get => _style;
+            set => _style = value;
+        }
+
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
 
         public Art(string name, STYLE style)
         {
@@ -28,5 +38,5 @@ namespace Prog_122_S24_L14_Sal
         {
             return $"{_name} - {_style}";
         }
-    } // Art
-} // namespace
+    }
+}

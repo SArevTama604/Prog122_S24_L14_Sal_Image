@@ -1,43 +1,85 @@
-﻿using System;
-using System.IO;
+﻿using Microsoft.Win32;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Microsoft.Win32;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace Prog_122_S24_L14_Sal
 {
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            FillComboBox();
 
-            cmbStyles.ItemsSource = Enum.GetValues(typeof(STYLE));
 
-            Art nighthawks = new Art("Nighthawks", STYLE.Impressionism);
+            imgDisplay.Source = ConvertToImage("C:\\Users\\Salva\\OneDrive\\Attachments\\coding assignments\\Prog122_S24_L14_Sal_Image\\iMages\\Image.jpg.jpg");
+
+        } // MainWindow()
+
+        
+
+        public BitmapImage ConvertToImage(string filePath)
+        {
+            string imgPath = @filePath;
+
+            // Uniform Resource Identifier
+            Uri convertPath = new Uri(imgPath);
+
+            BitmapImage bitmap = new BitmapImage(convertPath);
+
+            return bitmap; 
+        }
+
+
+        public void FillComboBox()
+        {
+            Art nighthawks = new Art("Nighthawks", Art.STYLE.Impressionism);
+
             runDisplay.Text = nighthawks.ToString();
+
+            cmbStyles.ItemsSource = Enum.GetValues<Art.STYLE>().Cast<Art.STYLE>().ToList();
+
+
         }
 
-        private BitmapImage LoadImage(string filePath)
-        {
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(filePath);
-            bitmap.EndInit();
-            return bitmap;
-        }
 
-        private void SelectImage_Click(object sender, RoutedEventArgs e)
+
+        private void btnLoadImage_Click(object sender, RoutedEventArgs e)
         {
+            // Step 1 
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg";
 
+            // Filter
+            // What displays in drop down box
+            string displayFilter = "Image files (*.png;*.jpeg;*.jpg)";
+            // Used to filter results in the file explorer
+            string filterBy = "*.png;*.jpeg;*.jpg";
+            // Full String needed
+            // MUST HAVE PIPE BETWEEN DISPLAY AND FILTER
+            string fullFilter = $"{displayFilter}|{filterBy}";
+            openFileDialog.Filter = displayFilter;
+
+            // opens the dialog and resturns true if a image is selected 
             if (openFileDialog.ShowDialog() == true)
             {
-                string selectedFilePath = openFileDialog.FileName;
-                imgDisplay.Source = LoadImage(selectedFilePath);
+
+                string returnedFilePath = openFileDialog.FileName;
+                imgDisplay.Source = ConvertToImage(returnedFilePath);
             }
+
+
+
         }
     }
 }

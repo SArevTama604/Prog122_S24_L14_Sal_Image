@@ -9,13 +9,11 @@
     Title="MainWindow"
     Height="450"
     Width="800">
-
-
     <Canvas>
         <RichTextBox
             Height="47"
-            Canvas.Left="79"
-            Canvas.Top="367"
+            Canvas.Left="81"
+            Canvas.Top="323"
             Width="423"
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
@@ -29,9 +27,10 @@
         <ComboBox
             x:Name="cmbStyles"
             HorizontalAlignment="Left"
-            Margin="544,380,0,0"
             VerticalAlignment="Top"
-            Width="187" />
+            Width="187"
+            Canvas.Left="544"
+            Canvas.Top="336" />
         <Image
             x:Name="imgDisplay"
             HorizontalAlignment="Left"
@@ -39,5 +38,15 @@
             Margin="152,89,0,0"
             VerticalAlignment="Top"
             Width="564" />
+        <Button
+            x:Name="btnLoadImage"
+            Content="Load Image"
+            Canvas.Left="152"
+            Canvas.Top="394"
+            Width="248"
+            Height="30"
+            Click="SelectImage_Click"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center" />
     </Canvas>
 </Window>
